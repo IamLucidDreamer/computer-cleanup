@@ -1,0 +1,67 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "prettier",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+
+  "plugins": ["import", "promise", "prettier", "react-hooks"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["."],
+        "extensions": [".ts", ".tsx", ".d.ts"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react", "plugin:jest-dom/recommended"]
+    }
+  ],
+  "rules": {
+    "react/prop-types": "off",
+    // Types related
+    "no-console": "off",
+    // General
+    "no-unused-vars": "warn",
+    // note you must disable the base rule as it can report incorrect errors
+    "no-shadow": "off",
+
+    //Imports related
+    "import/extensions": 0,
+    "import/prefer-default-export": "off",
+    "import/no-default-export": "error",
+    "import/no-unresolved": 0,
+    "no-use-before-define": "off",
+    "no-undef": 0,
+    // React specific
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".tsx", ".js", ".jsx"]
+      }
+    ],
+
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/label-has-for": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/require-default-props": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
+  },
+
+  "parserOptions": {
+    "ecmaVersion": 2020
+  }
+}

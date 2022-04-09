@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("PRISMA_DB_URL")
+}
+
+model User {
+  id                 Int          @id @default(autoincrement())
+  name               String
+  email              String       @unique
+  dateOfBirth        String?
+  age                Int?
+  gender             Int?         @default(1)
+  phoneNumber        String?      @unique
+  points             Int?         @default(0)
+  profilePicture     String?
+  bussinessType      String?
+  companyCode        String?
+  address            String?
+  city               String?
+  state              String?
+  country            String?
+  mobileNumber       String?      @unique
+  ebServiceNo        String?      @unique
+  industryType       String?
+  gstin              String?      @unique
+  documents          String[]
+  encrypted_password String
+  role               Int?         @default(1)
+  createdAt          DateTime?    @default(now())
+  updatedAt          DateTime?    @updatedAt
+  usedQRCodes        UsedQRCode[]
+  qRCodes            QRCode[]
+  products           Product[]
+}
+
+model Product {
+  id          Int     @id @default(autoincrement())
+  title       String  @unique
+  description String?
+  points      Int     @default(0)
+  photo       String?
+  QRCode      QRCode? @relation(fields: [qrId], references: [qrId])
+  qrId        String?
+  user        User?   @relation(fields: [userId], references: [id])
+  userId      Int?
+}
+
+model QRCode {
+  id         Int         @id @default(autoincrement())
+  qrId       String      @unique
+  user       User?       @relation(fields: [userId], references: [id])
+  userId     Int?
+  products   Product[]
+  redeemed   Boolean?    @default(false)
+  UsedQRCode UsedQRCode?
+  createdAt  DateTime?   @default(now())
+  updatedAt  DateTime?   @updatedAt
+}
+
+model UsedQRCode {
+  id        Int       @id @default(autoincrement())
+  user      User      @relation(fields: [userId], references: [id])
+  userId    Int
+  qrCode    QRCode    @relation(fields: [qrId], references: [qrId])
+  qrId      String    @unique
+  redeemed  Boolean?  @default(true)
+  createdAt DateTime? @default(now())
+}

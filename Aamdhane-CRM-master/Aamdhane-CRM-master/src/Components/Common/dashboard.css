@@ -1,0 +1,20 @@
+main {
+  overflow-x: hidden !important;
+}
+.block {
+  color: #fff;
+}
+.block h2 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.block .num {
+  font-size: 24px;
+  padding-left: 20px;
+}
+
+.block .icon {
+  font-size: 35px;
+}

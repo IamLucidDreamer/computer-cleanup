@@ -1,0 +1,19 @@
+.loginContainer {
+  background-color: #f2f2f2;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.login-form {
+  margin: auto;
+  max-width: 300px;
+}
+.login-form-forgot {
+  float: right;
+}
+.ant-col-rtl .login-form-forgot {
+  float: left;
+}
+.login-form-button {
+  width: 100%;
+}

@@ -1,0 +1,16 @@
+input:hover {
+  border-left: 1px solid #d9d9d9 !important;
+  border-top: 1px solid #d9d9d9 !important;
+  border-bottom: 1px solid #d9d9d9 !important;
+}
+
+.iconBtn {
+  border-right: 1px solid #d9d9d9 !important;
+  border-top: 1px solid #d9d9d9 !important;
+  border-bottom: 1px solid #d9d9d9 !important;
+}
+
+.tileStyle {
+  box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}

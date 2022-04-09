@@ -1,0 +1,8 @@
+thead[class*='ant-table-thead'] th {
+  /* font-size: 16px; */
+  font-weight: bold;
+}
+
+.rowDisabled {
+  background-color: #dddddd !important;
+}

@@ -1,0 +1,132 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "API documentation for Green Built",
+		"version": "1.0.0",
+		"title": "Green Build",
+		"contact": {
+			"email": "zeddlabz@gmail.com"
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+		}
+	},
+	"basePath": "/api",
+	"tags": [
+		{
+			"name": "auth",
+			"description": "Authentication apis"
+		},
+		{
+			"name": "user",
+			"description": "User apis"
+		}
+	],
+	"schemes": ["https", "http"],
+	"paths": {
+		"/signup": {
+			"post": {
+				"tags": ["auth"],
+				"summary": "Auth Sign Up",
+				"description": "Sign Up API for User Creations",
+				"operationId": "signup",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"required": true,
+						"description": "User Can be created using this API",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"name": {
+									"type": "krish"
+								},
+								"email": {
+									"type": "krish7x@gmail.com"
+								},
+								"phone": {
+									"type": "7448629667"
+								},
+								"password": {
+									"type": "krish1234"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "success"
+					},
+					"400": {
+						"description": "Bad request, due to the action out of scope of authenticated user or due to invalid request body/query parameters/header"
+					},
+					"401": {
+						"description": "Not valid credentials"
+					},
+					"403": {
+						"description": "Request not allowed"
+					}
+				},
+				"security": [
+					{
+						"api_key": []
+					}
+				]
+			}
+		},
+		"/signin": {
+			"post": {
+				"tags": ["auth"],
+				"summary": "signin the user",
+				"description": "",
+				"operationId": "signin",
+				"consumes": ["application/json"],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "authentication either via email/password",
+						"required": true,
+						"schema": {
+							"type": "object",
+							"properties": {
+								"email": {
+									"type": "krish7x@gmail.com"
+								},
+								"password": {
+									"type": "krish1234"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "sign in success, adds auth token to cookie as token=AUTHTOKEN",
+						"headers": {
+							"Set-Cookie": {
+								"type": "string",
+								"description": "token=abcde12345; Path=/; HttpOnly"
+							}
+						}
+					},
+					"400": {
+						"description": "Bad request, due to the action out of scope of authenticated user or due to invalid request body/query parameters/header"
+					},
+					"401": {
+						"description": "Not valid credentials"
+					},
+					"403": {
+						"description": "Request not allowed"
+					}
+				}
+			}
+		}
+	}
+}
